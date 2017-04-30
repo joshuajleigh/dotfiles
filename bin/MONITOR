@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+function MON {
+echo "Turn on Display: right (r) - left (l) - mirror (m) off (o)?"
+echo "Move workspace: Right - (R) Left (L)"
+read SIDE
+case $SIDE in
+r)
+        xrandr --output HDMI2 --auto --right-of eDP1
+        exit;;
+R)
+        #i3-msg move workspace to output right
+        swaymsg move workspace to output right
+        exit;;
+l)
+        xrandr --output HDMI2 --auto --left-of eDP1
+        exit;;
+L)
+        #i3-msg move workspace to output left
+        swaymsg move workspace to output left
+        exit;;
+
+o|O)
+        xrandr --output HDMI2 --off
+        exit;;
+m|M)
+        xrandr --output HDMI2 --auto --same-as eDP1
+        exit;;
+*)
+        echo "you must select (r) (l) (o) or use CTRL+C to exit"
+        MON;;
+esac
+}
+
+MON 

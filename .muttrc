@@ -1,0 +1,52 @@
+# ~/.muttrc
+
+set spoolfile=~/Maildir/LFO/INBOX
+
+# needed for maildir format
+set mbox_type=Maildir
+set folder=~/Maildir/LFO/
+set sendmail="/usr/bin/msmtp"
+my_hdr From: "jleigh@leapfrogonline.com"
+
+# setting theme
+source ~/.config/mutt/themes/comidia
+
+# set mailcap file for handling different filetypes
+# text vs html vs image, etc
+set mailcap_path        = ~/.config/mutt/mailcap                # enabling html read
+# view some some items inline
+auto_view text/html                                      # view html automatically
+auto_view text/calendar                                  # view ics files via mutt_ics python application
+set query_command="~/Downloads/mutt-ldap.pl '%s'"
+
+# configuration for display format
+set index_format="%3C %Z %[!%H:%M %m.%d] %-17.17F (%5c) %s"
+
+# Index
+# vim style keymappings
+bind index j next-entry
+bind index k previous-entry
+bind index J next-thread
+bind index K previous-thread
+
+bind index / search
+#bind index ? search-reverse
+bind index n search-next
+bind index N search-opposite
+
+bind index gg first-entry
+bind index G last-entry
+
+bind index r reply
+bind index g imap-fetch-mail
+bind index R group-reply
+
+# Pager
+# vim style keymappings
+bind pager j next-line
+bind pager k previous-line
+bind pager / search
+bind pager ? search-reverse
+bind pager n search-next
+bind pager N search-opposite
+unset markers

@@ -34,7 +34,7 @@ URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.matcher.button: 1
 
 !Base16 google-dark
-vim:enc=utf-8:nu:ai:si:et:ts=4:sw=4:ft=xdefaults:
+!vim:enc=utf-8:nu:ai:si:et:ts=4:sw=4:ft=xdefaults:
 
 *color0:rgb:1d/1f/21
 *color1:rgb:CC/34/2B

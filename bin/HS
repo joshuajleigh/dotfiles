@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+HEADSET() {
+echo "(1) ON or (0) OFF?"
+read MODE
+case $MODE in
+1)
+        echo -e "power on \n connect 00:1A:7D:12:35:A4 \n quit \n" | bluetoothctl
+        exit;;
+0)
+        echo -e "disconnect 00:1A:7D:12:35:A4 \n power off \n quit \n" | bluetoothctl
+        exit;;
+*)
+        echo "you must select (1) ON or (0) OFF or use CTRL+C to exit"
+        HEADSET;;
+esac
+}
+HEADSET

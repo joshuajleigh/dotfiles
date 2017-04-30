@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+if [ -z ${1+x} ]; then
+        echo "don't forget to include the file"
+        echo "example mdview <path/to/file>"
+        exit
+else
+
+        grip $1 2>/dev/null & sleep 1 && lynx localhost:6419 && kill $(pgrep grip)
+
+fi

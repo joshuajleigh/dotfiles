@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# Opens the github page for the current git repository in your browser
+function gh() {
+  giturl=$(git config --get remote.origin.url | sed 's/git@\|.git//g' | tr ':' '/')
+  if [ "$giturl" == "" ]
+    then
+     echo "Not a git repository or no remote.origin.url set"
+     exit 1;
+  fi
+  xdg-open https://$giturl
+}
+
+gh
