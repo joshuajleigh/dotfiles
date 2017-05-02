@@ -9,15 +9,15 @@ r)
         xrandr --output HDMI2 --auto --right-of eDP1
         exit;;
 R)
-        #i3-msg move workspace to output right
-        swaymsg move workspace to output right
+        i3-msg move workspace to output right
+        #swaymsg move workspace to output right
         exit;;
 l)
         xrandr --output HDMI2 --auto --left-of eDP1
         exit;;
 L)
-        #i3-msg move workspace to output left
-        swaymsg move workspace to output left
+        i3-msg move workspace to output left
+        #swaymsg move workspace to output left
         exit;;
 
 o|O)

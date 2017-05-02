@@ -30,7 +30,8 @@ font pango:DejaVu Sans Mono 12
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec xterm -fg white -bg black
+#bindsym $mod+Return exec xterm -fg white -bg black
+bindsym $mod+Return exec urxvt
 
 # lock screen
 bindsym $mod+Control+l exec "i3lock -i ~/Pictures/falloutscreen.png -c 000000"
@@ -170,6 +171,16 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+
+# Pianobar script section
+#
+    bindsym Mod4+p exec ~/.config/pianobar/control-pianobar.sh p
+    bindsym Mod4+equal exec ~/.config/pianobar/control-pianobar.sh +
+    bindsym Mod4+minus exec ~/.config/pianobar/control-pianobar.sh -
+    bindsym Mod4+n exec ~/.config/pianobar/control-pianobar.sh n
+    bindsym Mod4+q exec ~/.config/pianobar/control-pianobar.sh q
+    bindsym Mod4+s exec ~/.config/pianobar/control-pianobar.sh ss
+    bindsym Mod4+t exec ~/.config/pianobar/control-pianobar.sh t
 
 mouse_warping none
 
