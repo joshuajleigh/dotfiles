@@ -1,0 +1,14 @@
+[alias]
+  co = checkout
+  ci = commit
+  st = status
+  br = branch
+  type = cat-file -t
+  dump = cat-file -p
+  pom = pull origin master
+  pjm = push jleigh master
+  hist = log --pretty=format:\"%cd %cn %s %h\" --graph --relative-date
+  delete-merged-branches = "!git co master && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+  PR = pull-request -o -m
+[hub]
+	host = gh.leapfrogonline.com

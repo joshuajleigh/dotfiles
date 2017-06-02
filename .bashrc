@@ -29,3 +29,19 @@ if [ -f /etc/bash_completion.d/hub.bash_completion.sh ]; then
 fi
 
 export GITHUB_URL=https://gh.leapfrogonline.com/  #for ruby gist gem with enterprise github
+
+#open vim with nerdtree
+alias vimd="vim -c NERDTree"
+
+#open calcurse with orgmode
+alias CAL="VISUAL='vim -c \"setl filetype=org\"' PAGER=vim calcurse"
+
+#git add changed files and commit in one
+function got() {
+  if [ -z ${1+x} ]; then
+    echo "add a message for the commit 'got \"something\"'"
+  else
+    branch = $(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \[\1\]/')
+    git add . && git commit -m "$1" && git push jleigh $branch
+  fi
+}
