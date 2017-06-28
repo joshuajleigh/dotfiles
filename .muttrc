@@ -17,7 +17,7 @@ set mailcap_path        = ~/.config/mutt/mailcap                # enabling html 
 # view some some items inline
 auto_view text/html                                      # view html automatically
 auto_view text/calendar                                  # view ics files via mutt_ics python application
-set query_command="~/Downloads/mutt-ldap.pl '%s'"
+set query_command="~/.config/mutt/mutt-ldap.pl '%s'"
 
 # configuration for display format
 set index_format="%3C %Z %[!%H:%M %m.%d] %-17.17F (%5c) %s"

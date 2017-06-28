@@ -211,6 +211,8 @@ exec xset -b
 exec --no-startup-id dunst -config .config/dunst/dunstrc
 # startup remind notifications
 exec /home/jleigh/bin/remind-notify.bash
+#start davmail
+exec davmail
 # startup kdeconnect
 exec kdeconnect-cli --refresh
 exec xbindkeys

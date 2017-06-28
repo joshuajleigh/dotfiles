@@ -31,7 +31,9 @@ Plug 'https://github.com/ctrlpvim/ctrlp.vim'
 "Plug 'blindFS/vim-taskwarrior'
 Plug 'https://github.com/tpope/vim-speeddating'
 Plug 'https://github.com/vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'https://github.com/christoomey/vim-tmux-navigator'
 
 call plug#end()
 
-"au VimEnter *  NERDTree
+let g:airline_theme='powerlineish'

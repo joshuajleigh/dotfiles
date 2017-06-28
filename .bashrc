@@ -42,6 +42,12 @@ function got() {
     echo "add a message for the commit 'got \"something\"'"
   else
     branch = $(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \[\1\]/')
-    git add . && git commit -m "$1" && git push jleigh $branch
+    git add . && git commit -m "$1" && git push $(whoami) $branch
   fi
 }
+
+PATH="/home/jleigh/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/jleigh/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/jleigh/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/jleigh/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/jleigh/perl5"; export PERL_MM_OPT;
