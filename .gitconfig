@@ -13,5 +13,4 @@
 [hub]
 	host = gh.leapfrogonline.com
 [credential]
-[credential]
 	helper = cache --timeout=28800
