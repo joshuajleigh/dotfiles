@@ -26,14 +26,18 @@ Plug 'https://github.com/philpep/vim-rst-tables'
 Plug 'https://github.com/scrooloose/nerdtree'
 Plug 'https://github.com/ntpeters/vim-better-whitespace'
 Plug 'https://github.com/jceb/vim-orgmode'
-"Plug 'https://github.com/itchyny/calendar.vim'
 Plug 'https://github.com/ctrlpvim/ctrlp.vim'
-"Plug 'blindFS/vim-taskwarrior'
 Plug 'https://github.com/tpope/vim-speeddating'
-Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'https://github.com/christoomey/vim-tmux-navigator'
 
 call plug#end()
 
-let g:airline_theme='powerlineish'
+"powerline stuff
+python3 from powerline.vim import setup as powerline_setup
+python3 powerline_setup()
+python3 del powerline_setup
+set laststatus=2 " Always display the statusline in all windows
+set showtabline=2 " Always display the tabline, even if there is only one tab
+set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
+set t_Co=256

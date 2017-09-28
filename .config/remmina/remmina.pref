@@ -1,6 +1,6 @@
 [remmina_pref]
 secret=zcM5tmruk3L3ChYgw50n7EiFrCA1Fzg1biHkixxue+k=
-recent_RDP=rva-dc01,wireshark,sv-bidb-dev.leapfrogonline.com
+recent_RDP=rva-dc01,wireshark,sv-bidb-dev.leapfrogonline.com,sv-rds2-vm,sv-fserver,wvmhost-02.leapfrogonline.com,sv-backupexec,sch1-backupexec.leapfrogonline.com
 save_view_mode=true
 save_when_connect=true
 invisible_toolbar=false
@@ -21,8 +21,8 @@ view_file_mode=0
 resolutions=640x480,800x600,1024x768,1152x864,1280x960,1400x1050
 keystrokes=Send hello world§hello world\\n
 main_width=1916
-main_height=1023
-main_maximize=false
+main_height=1045
+main_maximize=true
 main_sort_column_id=1
 main_sort_order=0
 expanded_group=

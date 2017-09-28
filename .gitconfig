@@ -11,6 +11,6 @@
   delete-merged-branches = "!git co master && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
   PR = pull-request -o -m
 [hub]
-	host = gh.leapfrogonline.com
+	host = gh.leapfrogonline.net
 [credential]
 	helper = cache --timeout=28800

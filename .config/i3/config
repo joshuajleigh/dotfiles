@@ -31,7 +31,7 @@ floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec xterm -fg white -bg black
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec alacritty
 
 # lock screen
 bindsym $mod+Control+l exec "i3lock -i ~/Pictures/falloutscreen.png -c 000000"
@@ -123,21 +123,18 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
-# Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
-# Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 1 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume 1 -5% #decrease sound volume
-bindsym XF86AudioMute exec pactl set-sink-mute 1 toggle # mute sound
+#audio controls
+bindsym XF86AudioMute           exec --no-startup-id amixer set Master toggle
+bindsym XF86AudioRaiseVolume    exec --no-startup-id amixer set Master 5%+
+bindsym XF86AudioLowerVolume    exec --no-startup-id amixer set Master 5%-
+bindsym XF86AudioMicMute        exec --no-startup-id amixer set Capture toggle
+
+# Keybindings for the screen-brightness
+bindsym XF86MonBrightnessUp     exec --no-startup-id xbacklight +5
+bindsym XF86MonBrightnessDown   exec --no-startup-id xbacklight -5
+
 # Touchpad controls
 #bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
-
-# Media player controls
-bindsym XF86AudioPlay exec playerctl play
-bindsym XF86AudioPause exec playerctl pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -187,16 +184,16 @@ mouse_warping none
 ##
 ## Bar
 #
-bar {
-    status_command i3blocks
-    font                            pango:dejavu sans book 16
+#bar {
+#    status_command i3blocks
+#    font                            pango:dejavu sans book 16
 #    position top
-    colors {
+#    colors {
 #        statusline #ffffff
 #        background #323232
 #        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
-}
+#    }
+#}
 
 ### THEME ###
 
