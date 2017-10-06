@@ -213,3 +213,5 @@ exec davmail
 # startup kdeconnect
 exec kdeconnect-cli --refresh
 exec xbindkeys
+# startup powerline
+exec powerline-daemon -q

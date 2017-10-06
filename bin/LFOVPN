@@ -5,13 +5,13 @@ PASSWD1="V3r1745CumL18357473"
 PASSWD2=$1
 
 sudo kill $(pgrep openconnect) 2&>/dev/null
-#sudo openconnect vpn.leapfrogonline.com --pid-file=/var/run/vpnc/pid -b
+sudo openconnect vpn.leapfrogonline.com --pid-file=/var/run/vpnc/pid -b
 #sudo openconnect vpn-dr.leapfrogonline.com --pid-file=/var/run/vpnc/pid -b
-sudo openconnect vpn-secondary.leapfrogonline.com --pid-file=/var/run/vpnc/pid -b
+#sudo openconnect vpn-secondary.leapfrogonline.com --pid-file=/var/run/vpnc/pid -b
 
  #<<< echo -e "$USRNM\n$PASSWD1\n$1\n"
 
 #sudo openconnect vpn.leapfrogonline.com --pid-file=/var/run/vpnc/pid -b
 #expect "Username:" {send "jleigh" "\n"}
-#expect "Password:" {send "V3r1745CumL183r7473" "\n"}
+#expect "Password:" {send "xxxxxxxx" "\n"}
 #expect "Password:" {send $1 "\n"}
