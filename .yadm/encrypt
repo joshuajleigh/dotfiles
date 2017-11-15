@@ -1,6 +1,5 @@
 .config/newsbeuter/config
 .config/pianobar/config
-.offlineimaprc
 .aws/config
 .aws/credentials
 .ssh/AWSaccessKeys.csv
@@ -14,7 +13,4 @@
 .ssh/portaclown-slimbox
 .ssh/portaclown-slimbox.pub
 .weechat/plugins.conf
-.davmail.properties
-.msmtprc
 .config/.53cr375
-/etc/xdg/powerline/themes/tmux/jleigh.json

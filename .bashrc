@@ -14,6 +14,7 @@ PS1="\[\033[0;32m\]\$(parse_git_branch_and_add_brackets) \[\033[0m\][\u@\h \W]\n
 
 eval $(keychain --quiet --eval ~/.ssh/LFO-key)
 eval $(keychain --quiet --eval ~/.ssh/portaclown-slimbox)
+PATH="$PATH:.rbenv/bin"
 eval "$(rbenv init -)"
 eval "$(hub alias -s)"
 
