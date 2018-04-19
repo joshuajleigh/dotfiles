@@ -1,28 +1,87 @@
 #!/usr/bin/env bash
 
-function MON {
+get_sway_displays() {
+  swaymsg -t get_outputs | jq -r '.[].name' | grep -v eDP-1
+}
+
+function SWAY_MON {
+SCREEN1=$(get_sway_displays | sort | head -1)
+SCREEN2=$(get_sway_displays | sort | tail -1)
 echo "Turn on Display: right (r) - left (l) - mirror (m) off (o)?"
 echo "Move workspace: Right - (R) Left (L) - (D) down/main"
-echo "Start workspace: (w)"
+echo "Start workspace: (w) goto defaults (d)"
+read SIDE
+case $SIDE in
+r)
+        #xrandr --output HDMI-2 --auto --right-of eDP-1
+        exit;;
+R)
+        #i3-msg move workspace to output DP-2-2
+        #i3-msg move workspace to output right
+        swaymsg move workspace to output right
+        exit;;
+l)
+        #xrandr --output HDMI-2 --auto --left-of eDP-1
+        exit;;
+L)
+        #i3-msg move workspace to output DP-2-3
+        #i3-msg move workspace to output left
+        swaymsg move workspace to output left
+        exit;;
+d)
+        swaymsg output eDP-1 pos 0 0 res 1920x1080
+        swaymsg output $SCREEN1 pos 1920 0 res 1920x1080
+        swaymsg output $SCREEN2 3840 0 res 1920x1080
+        exit;;
+D)
+        i3-msg move workspace to output eDP-1
+        exit;;
+
+o|O)
+        #xrandr --output HDMI-2 --off --output DP-2-2 --off --output DP-2-3 --off
+        exit;;
+m|M)
+        #xrandr --output HDMI-2 --auto --same-as eDP-1
+        exit;;
+w|W)
+#        xrandr --output DP-2-3 --auto --above eDP-1 --output DP-2-2 --auto --right-of DP-2-3
+        swaymsg output eDP-1 pos 960 1080 res 1920x1080
+        swaymsg output $SCREEN1 pos 1920 0 res 1920x1080
+        swaymsg output $SCREEN2 pos 0 0 res 1920x1080
+        exit;;
+*)
+        echo "you must select (r) (l) (o) (d) or use CTRL+C to exit"
+        MON;;
+esac
+}
+
+I3_MON() {
+SCREENS=($(xrandr | awk '{if($2=="connected"){print $1}}' | tail -2))
+echo "SCREEN1=${SCREENS[0]}"
+echo "SCREEN2=${SCREENS[1]}"
+echo "Turn on Display: right (r) - left (l) - mirror (m) off (o)?"
+echo "Move workspace: Right - (R) Left (L) - (D) down/main"
+echo "Start workspace: (w) goto defaults (d)"
 read SIDE
 case $SIDE in
 r)
         xrandr --output HDMI-2 --auto --right-of eDP-1
         exit;;
 R)
-        i3-msg move workspace to output DP-2-2
-        #i3-msg move workspace to output right
-        #swaymsg move workspace to output right
+        i3-msg move workspace to output right
         exit;;
 l)
         xrandr --output HDMI-2 --auto --left-of eDP-1
         exit;;
 L)
-        i3-msg move workspace to output DP-2-3
-        #i3-msg move workspace to output left
-        #swaymsg move workspace to output left
+        i3-msg move workspace to output left
         exit;;
-d|D)
+d)
+        swaymsg output eDP-1 pos 0 0 res 1920x1080
+        swaymsg output $SCREEN1 pos 1920 0 res 1920x1080
+        swaymsg output $SCREEN2 3840 0 res 1920x1080
+        exit;;
+D)
         i3-msg move workspace to output eDP-1
         exit;;
 
@@ -30,15 +89,21 @@ o|O)
         xrandr --output HDMI-2 --off --output DP-2-2 --off --output DP-2-3 --off
         exit;;
 m|M)
-        xrandr --output HDMI-2 --auto --same-as eDP1
+        xrandr --output HDMI-2 --auto --same-as eDP-1
         exit;;
 w|W)
-        xrandr --output DP-2-3 --auto --above eDP-1 --output DP-2-2 --auto --right-of DP-2-3
+        echo "xrandr --output ${SCREENS[1]} --auto --above eDP-1 --output ${SCREENS[0]} --auto --right-of ${SCREENS[1]}"
+#        xrandr --output ${SCREENS[1]} --auto --above eDP-1 --output ${SCREENS[0]} --auto --right-of ${SCREENS[1]}
         exit;;
 *)
-        echo "you must select (r) (l) (o) or use CTRL+C to exit"
+        echo "you must select (r) (l) (o) (d) or use CTRL+C to exit"
         MON;;
 esac
 }
 
-MON 
+if pidof sway >/dev/null; then
+  SWAY_MON
+else
+  I3_MON
+fi
+

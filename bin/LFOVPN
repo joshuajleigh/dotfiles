@@ -6,8 +6,9 @@ PASSWD2=$1
 
 sudo kill $(pgrep openconnect) 2&>/dev/null
 #sudo openconnect vpn.leapfrogonline.com --pid-file=/var/run/vpnc/pid -b
-#sudo openconnect vpn-dr.leapfrogonline.com --pid-file=/var/run/vpnc/pid -b
-sudo openconnect vpn-secondary.leapfrogonline.com --pid-file=/var/run/vpnc/pid -b
+sudo openconnect vpn-dr.leapfrogonline.com --pid-file=/var/run/vpnc/pid -b
+#sudo openconnect vpn-secondary.leapfrogonline.com --pid-file=/var/run/vpnc/pid -b
+#sudo openconnect 204.93.238.116 --pid-file=/var/run/vpnc/pid -b
 
  #<<< echo -e "$USRNM\n$PASSWD1\n$1\n"
 

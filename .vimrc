@@ -1,3 +1,4 @@
+set directory=~/.vim/swapfiles//
 set cursorline
 set clipboard=unnamed
 syntax on
@@ -6,6 +7,7 @@ set ls=2
 set synmaxcol=120
 set shiftwidth=2
 set tabstop=2
+set list listchars=tab:▸\ ,trail:·,precedes:←,extends:→
 
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>

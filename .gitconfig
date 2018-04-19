@@ -6,11 +6,10 @@
   type = cat-file -t
   dump = cat-file -p
   pom = pull origin master
-  pjm = push jleigh master
   hist = log --pretty=format:\"%cd %cn %s %h\" --graph --relative-date
   delete-merged-branches = "!git co master && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
   PR = pull-request -o -m
-  wipe = !bash -c 'git co master && git pom && git delete-merged-branches'
+  wipe = "!git co master && git branch -r --merged | grep $(whoami) | grep -v master | sed \"s,$(whoami)/,,\" | xargs -n 1 git push --delete $(whoami)"
   got = "!f() { \
     [ -z \""$1\"" ] && echo "ERROR: add a message for the commit" && exit 1; \
     branch=$(git rev-parse --abbrev-ref HEAD); \
@@ -22,6 +21,6 @@
     git add . && git commit -m \""$1"\" && git push $(whoami) $branch && hub pull-request -o -m $branch; \
   }; f"
 [hub]
-	host = gh.leapfrogonline.net
+  host = gh.leapfrogonline.net
 [credential]
-	helper = cache --timeout=28800
+  helper = cache --timeout=28800

@@ -37,10 +37,26 @@ alias ls='ls --color=auto'
 alias vimd="vim -c NERDTree"
 
 #open calcurse with orgmode
-alias CAL="VISUAL='vim -c \"setl filetype=org\"' PAGER=vim calcurse"
+alias CAL="VISUAL='vim -c \"setl filetype=org\"' PAGER=vim calcurse -D ~/Repos/ex2calcurse/.calcurse"
 
 #open lynx using home config
 alias lynx="lynx -cfg=~/.config/lynx/lynx.cfg"
 
 #open opsdocs in lynx
 alias OPSDOCS="lynx https://gh.leapfrogonline.com/pages/ops/"
+
+#see ip and location
+alias whereami="curl ifconfig.co/json 2>/dev/null | jq -r '\"\(.ip):\n\(.country):\n\(.city):\n\(.hostname)\"' | column -t -s:"
+
+#work email
+alias ex2mutt="docker run --rm \
+    --name='ex2mutt' \
+    --env='DISPLAY' \
+    -e USERID=$(id -u) \
+    -e FULLNAME='joshua leigh' \
+    -e ADUSER='jleigh@leapfrogonline.com' \
+    -v /etc/localtime:/etc/localtime \
+    -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
+    -v ~/Maildir:/home/user/Maildir \
+    -it exchange2mutt"
+
