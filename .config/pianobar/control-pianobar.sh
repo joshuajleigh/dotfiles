@@ -32,7 +32,7 @@
   # Your config folder
   fold="${XDG_CONFIG_HOME:-$HOME/.config}/pianobar"
   # The pianobar executable
-  pianobar="/home/jleigh/bin/pianobar"
+  pianobar="/usr/bin/pianobar"
   # A blank icon to show when no albumart is found. I prefer to use
   # the actual pandora icon for this, which you can easily find and
   # download yourself. I don't include it here for copyright concerns.

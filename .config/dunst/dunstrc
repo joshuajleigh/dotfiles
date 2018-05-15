@@ -11,7 +11,8 @@
     # <http://developer.gnome.org/pango/stable/PangoMarkupFormat.html>.
     # If markup is not allowed, those tags will be stripped out of the
     # message.
-    allow_markup = yes
+    markup = yes
+    plain_text = no
 
     # The format of the message.  Possible variables are:
     #   %a  appname
@@ -64,7 +65,7 @@
     # the top and down respectevly.
     # The width can be negative.  In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
-    geometry = "1870x1000-30+20"
+    geometry = "x50-10+20"
 
     # Shrink window if it's smaller than the width.  Will be ignored if
     # width is 0.
@@ -73,7 +74,7 @@
     # The transparency of the window.  Range: [0; 100].
     # This option will only work if a compositing windowmanager is
     # present (e.g. xcompmgr, compiz, etc.).
-    transparency = 0
+    transparency = 5
 
     # Don't remove messages, if the user is idle (no mouse or keyboard input)
     # for longer than idle_threshold seconds.
@@ -109,7 +110,7 @@
     # The height of a single line.  If the height is smaller than the
     # font height, it will get raised to the font height.
     # This adds empty space above and under the text.
-    line_height = 0
+    line_height = 3
 
     # Draw a line of "separatpr_height" pixel height between two
     # notifications.
@@ -147,9 +148,9 @@
     # Paths to default icons.
     icon_folders = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
 
-[frame]
-    width = 3
-    color = "#aaaaaa"
+#[frame]
+    frame_width = 5
+    frame_color = "#8EC07C"
 
 [shortcuts]
 
@@ -175,19 +176,29 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#222222"
-    foreground = "#888888"
+#    background = "#222222"
+#    foreground = "#888888"
+#    timeout = 10
+    frame_color = "#3B7C87"
+    foreground = "#3B7C87"
+    background = "#191311"
     timeout = 10
 
 [urgency_normal]
-    background = "#285577"
-    foreground = "#ffffff"
-    timeout = 10
+#    background = "#285577"
+#    foreground = "#ffffff"
+#    timeout = 10
+    frame_color = "#5B8234"
+    foreground = "#5B8234"
+    background = "#191311"
 
 [urgency_critical]
-    background = "#900000"
-    foreground = "#ffffff"
+#    background = "#900000"
+#    foreground = "#ffffff"
     timeout = 0
+    frame_color = "#B7472A"
+    foreground = "#B7472A"
+    background = "#191311"
 
 
 # Every section that isn't one of the above is interpreted as a rules to
