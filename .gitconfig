@@ -9,7 +9,7 @@
   hist = log --pretty=format:\"%cd %cn %s %h\" --graph --relative-date
   delete-merged-branches = "!git co master && git pom && git br --merged | grep -v '\\*' | xargs -n 1 git branch -d"
   PR = pull-request -o -m
-  wipe = "!git co master && git branch -r --merged | grep $(whoami) | grep -v master | sed \"s,$(whoami)/,,\" | xargs -n 1 git push --delete $(whoami) && git delete-merged-branches"
+  wipe = "!git co master && git pom | git branch -r --merged | grep $(whoami) | grep -v master | sed \"s,$(whoami)/,,\" | xargs -n 1 git push --delete $(whoami) && git delete-merged-branches"
   got = "!f() { \
     [ -z \""$1\"" ] && echo "ERROR: add a message for the commit" && exit 1; \
     branch=$(git rev-parse --abbrev-ref HEAD); \
