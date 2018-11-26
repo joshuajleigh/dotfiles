@@ -65,7 +65,7 @@
     # the top and down respectevly.
     # The width can be negative.  In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
-    geometry = "x50-10+20"
+    geometry = "x50-0+10"
 
     # Shrink window if it's smaller than the width.  Will be ignored if
     # width is 0.
@@ -74,7 +74,7 @@
     # The transparency of the window.  Range: [0; 100].
     # This option will only work if a compositing windowmanager is
     # present (e.g. xcompmgr, compiz, etc.).
-    transparency = 5
+    transparency = 25
 
     # Don't remove messages, if the user is idle (no mouse or keyboard input)
     # for longer than idle_threshold seconds.

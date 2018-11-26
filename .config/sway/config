@@ -135,6 +135,9 @@ bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 # Touchpad controls
 #bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
 
+#printscreen
+bindsym Print exec swaygrab "/home/jleigh/Pictures/screenshot-$(date +%m-%d-%y-%T).png"
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 
@@ -143,7 +146,7 @@ bindsym $mod+Shift+r restart
 
 # exit i3 (logs you out of your X session)
 #bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-bindsym $mod+Shift+e exit
+bindsym $mod+Shift+e ; exec touch /home/jleigh/ithappened; exit
 
 # resize window (you can also use the mouse for that)
 mode "resize" {

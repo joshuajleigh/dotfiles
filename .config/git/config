@@ -9,18 +9,19 @@
   hist = log --pretty=format:\"%cd %cn %s %h\" --graph --relative-date
   delete-merged-branches = "!git co master && git pom && git br --merged | grep -v '\\*' | xargs -n 1 git branch -d"
   PR = pull-request -o -m
-  wipe = "!git co master && git pom | git branch -r --merged | grep $(whoami) | grep -v master | sed \"s,$(whoami)/,,\" | xargs -n 1 git push --delete $(whoami) && git delete-merged-branches"
+  wipe = "!git co master && git pom && git branch -r --merged | grep $(whoami) | grep -v master | sed \"s,$(whoami)/,,\" | xargs -n 1 git push --delete $(whoami) && git delete-merged-branches"
   got = "!f() { \
     [ -z \""$1\"" ] && echo "ERROR: add a message for the commit" && exit 1; \
     branch=$(git rev-parse --abbrev-ref HEAD); \
     git add . && git commit -m \""$1\"" && git push $(whoami) $branch; \
   }; f"
-  plop = "!f() { \
-    [ -z \""$1"\" ] && echo "ERROR: add a message for the commit/PR" && exit 1; \
-    branch=$(git rev-parse --abbrev-ref HEAD); \
-    git add . && git commit -m \""$1"\" && git push $(whoami) $branch && hub pull-request -o -m $branch; \
-  }; f"
+  next = "!branch=$(git rev-parse --abbrev-ref HEAD); \
+    git add . && git commit && git push $(whoami) $branch"
 [hub]
   host = gh.leapfrogonline.net
 [credential]
   helper = cache --timeout=28800
+[core]
+	editor = vim -c 'set tw=50'
+[commit]
+	template = /home/jleigh/.config/git/gitmessage.txt

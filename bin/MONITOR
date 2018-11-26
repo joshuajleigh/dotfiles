@@ -93,7 +93,7 @@ m|M)
         exit;;
 w|W)
         echo "xrandr --output ${SCREENS[1]} --auto --above eDP-1 --output ${SCREENS[0]} --auto --right-of ${SCREENS[1]}"
-#        xrandr --output ${SCREENS[1]} --auto --above eDP-1 --output ${SCREENS[0]} --auto --right-of ${SCREENS[1]}
+        xrandr --output ${SCREENS[1]} --auto --above eDP-1 --output ${SCREENS[0]} --auto --right-of ${SCREENS[1]}
         exit;;
 *)
         echo "you must select (r) (l) (o) (d) or use CTRL+C to exit"

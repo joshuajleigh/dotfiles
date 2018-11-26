@@ -168,6 +168,9 @@ bindsym $mod+r mode "resize"
 #        status_command i3status
 #}
 
+# lock screen
+bindsym $mod+Control+l exec i3lock -c 000000
+
 # turns off terminal beep
 exec xset -b
 # startup dunst

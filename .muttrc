@@ -1,29 +1,80 @@
 # ~/.muttrc
+##
+## IMAP CREDENTIALS
+##
+set smtp_url = "smtp://joshua.j.leigh@smtp.gmail.com:587/"
+set smtp_pass = "jkslxhhheincfjzo"
+set from = "joshua.j.leigh@gmail.com"
+set realname = "Joshua Leigh"
 
-set spoolfile=~/Maildir/LFO/INBOX
+##
+## IMAP SETTINGS
+##
+# activate TLS if available on the server
+set ssl_starttls=yes
+# always use SSL when connecting to a server
+set ssl_force_tls=yes
+# Don't wait to enter mailbox manually
+unset imap_passive
+# Automatically poll subscribed mailboxes for new mail (new in 1.5.11)
+set imap_check_subscribed
+
+
+##
+## GMAIL SPECIFIC
+##
+set folder = "imaps://imap.gmail.com:993"
+set spoolfile = "+INBOX"
+set postponed="+[Gmail]/Drafts"
+#set record="+[Gmail]/Sent Mail" # Causes duplicates in Gmail
+#set trash="+[Gmail]/Bin" # If disabled, mail will be archived (in Gmail)
+
+##
+## GENERIC
+##
+set header_cache=~/.mutt/cache/headers
+set message_cachedir=~/.mutt/cache/bodies
+set certificate_file=~/.mutt/certificates
+# Move read messages from your spool mailbox to your $mbox mailbox
+set move = no
+# Reduce polling frequency to a sane level
+set mail_check=60
+# And poll the current mailbox more often (not needed with IDLE in post 1.5.11)
+set timeout=10
+# keep a cache of headers for faster loading (1.5.9+?)
+set header_cache=~/.hcache
+# Display download progress every 5K
+set net_inc=5
+# Don't switch to next mail when paging down in a mail and hitting bottom
+set pager_stop=yes
+# Confirm quit
+set quit=ask-yes
+#set spoolfile=~/Maildir/LFO/INBOX
 
 # needed for maildir format
-set mbox_type=Maildir
-set folder=~/Maildir/LFO/
-set sendmail="/usr/bin/msmtp"
-my_hdr From: "jleigh@leapfrogonline.com"
+#set mbox_type=Maildir
+#set folder=~/Maildir/LFO/
+#set sendmail="/usr/bin/msmtp"
+#my_hdr From: "jleigh@leapfrogonline.com"
 
 # setting theme
-source ~/.config/mutt/themes/comidia
+#source ~/.config/mutt/themes/comidia
 
 # set mailcap file for handling different filetypes
 # text vs html vs image, etc
-set mailcap_path        = ~/.config/mutt/mailcap                # enabling html read
+#set mailcap_path        = ~/.config/mutt/mailcap                # enabling html read
 # view some some items inline
 auto_view text/html                                      # view html automatically
 auto_view text/calendar                                  # view ics files via mutt_ics python application
 set query_command="~/.config/mutt/mutt-ldap.pl '%s'"
 
+# Date format in index view. Standard strftime syntax.
+set date_format="!%a, %b %d, %Y at %I:%M:%S%p %Z"
 # configuration for display format
 set index_format="%3C %Z %[!%H:%M %m.%d] %-17.17F (%5c) %s"
 
 #setting signature
-set signature="~/.config/mutt/signature"
+#set signature="~/.config/mutt/signature"
 
 # Index
 # vim style keymappings

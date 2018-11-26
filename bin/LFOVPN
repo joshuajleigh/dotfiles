@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 
-USRNM="jleigh"
-PASSWD1="V3r1745CumL18357473"
-PASSWD2=$1
+USRNM=$(whoami)
+PASSWD=$(cat ~/.config/.53cr375 | awk -F "=" '{gsub(/"/, ""); if($1=="password"){print $2}}')
+#echo $PASSWD
 
 sudo kill $(pgrep openconnect) 2&>/dev/null
-#sudo openconnect vpn.leapfrogonline.com --pid-file=/var/run/vpnc/pid -b
-sudo openconnect vpn-dr.leapfrogonline.com --pid-file=/var/run/vpnc/pid -b
+#sudo openconnect -u jleigh vpn.leapfrogonline.com --pid-file=/var/run/vpnc/pid -b
+echo -e "$PASSWD\npush\n" | sudo openconnect --passwd-on-stdin -u jleigh vpn.leapfrogonline.com --pid-file=/var/run/vpnc/pid -b
+#sudo openconnect vpn-dr.leapfrogonline.com --pid-file=/var/run/vpnc/pid -b
 #sudo openconnect vpn-secondary.leapfrogonline.com --pid-file=/var/run/vpnc/pid -b
 #sudo openconnect 204.93.238.116 --pid-file=/var/run/vpnc/pid -b
 
@@ -16,3 +17,15 @@ sudo openconnect vpn-dr.leapfrogonline.com --pid-file=/var/run/vpnc/pid -b
 #expect "Username:" {send "jleigh" "\n"}
 #expect "Password:" {send "xxxxxxxx" "\n"}
 #expect "Password:" {send $1 "\n"}
+
+connect() {
+#  echo -e "$PASSWD1\n\push\n" |\
+  echo -e "$PASSWD1\npush\n" | \
+  sudo openconnect \
+    -u jleigh vpn.leapfrogonline.com \
+    --pid-file=/var/run/vpnc/pid \
+    -b \
+    --passwd-on-stdin
+}
+
+#connect

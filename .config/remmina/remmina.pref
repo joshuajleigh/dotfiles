@@ -52,8 +52,15 @@ shortcutkey_toolbar=116
 vte_font=
 vte_allow_bold_text=true
 vte_lines=512
-recent_RDP=ex-03
+recent_RDP=ex-03,192.168.50.40
 prevent_snap_welcome_message=false
+ssh_tcp_keepidle=20
+ssh_tcp_keepintvl=10
+ssh_tcp_keepcnt=3
+ssh_tcp_usrtimeout=60000
+deny_screenshot_clipboard=true
+hide_searchbar=false
+screenshot_name=remmina_%p_%h_%Y%m%d-%H%M%S
 
 [ssh_colors]
 background=#d5ccba
@@ -79,5 +86,5 @@ color15=#d5ccba
 [usage_stats]
 periodic_usage_stats_permission_asked=true
 periodic_usage_stats_permitted=true
-periodic_usage_stats_last_sent=1522858822
+periodic_usage_stats_last_sent=1543177586
 periodic_usage_stats_uuid_prefix=KEKQ7EAAJAMLF3

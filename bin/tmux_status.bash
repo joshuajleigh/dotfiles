@@ -51,18 +51,21 @@ CHECK_LOAD() {
 #    OUTPUT+=$(COLORIZE $i)
 #  done
 #  echo "$OUTPUT"
-echo "$(COLORIZE $LOAD1 2 3)"
+echo "$(COLORIZE $LOAD1 4 5)"
 }
 
 GET_BATTERY_LEVEL(){
   BATTERY_LEVEL=$(cat /sys/class/power_supply/$1/capacity)
-  echo "$1:$(REV_COLORIZE $BATTERY_LEVEL 70 20)"
+  echo "$(REV_COLORIZE $BATTERY_LEVEL 70 20)"
 }
 
 GET_ALL_BATTERY_LEVEL(){
   declare -a BATS=($(ls /sys/class/power_supply/ | grep BAT))
+  NU=0
   for i in ${BATS[@]}; do
-    ALL_BATS="$ALL_BATS$(GET_BATTERY_LEVEL $i)"
+#    ALL_BATS="$ALL_BATS$(GET_BATTERY_LEVEL $i)"
+    ALL_BATS+="B$NU:$(GET_BATTERY_LEVEL $i)"
+    ((NU++))
   done
   echo $ALL_BATS
 }

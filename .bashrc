@@ -16,22 +16,31 @@ eval $(keychain --quiet --eval ~/.ssh/LFO-key)
 eval $(keychain --quiet --eval ~/.ssh/portaclown-slimbox)
 PATH="$PATH:.rbenv/bin"
 eval "$(rbenv init -)"
-eval "$(hub alias -s)"
 
 export EDITOR=vim                           #sets vim as default
-export BROWSER=firefox                      #sets FF as default
+export BROWSER=firefox                      #sets firefox as default
 export VAGRANT_DEFAULT_PROVIDER=virtualbox  #helps vagrant work
 export GITHUB_URL=https://gh.leapfrogonline.net/ #for ruby gist gem with enterprise github
 export PATH="$HOME/bin:$PATH"               #adds local scripts
+#for hub commands
+eval "$(hub alias -s)"
 export PATH="$HOME/.rbenv/bin:$PATH"        #allows rbenv to work
 set bell-style visible
 
-if [ -f /etc/bash_completion.d/hub.bash_completion.sh ]; then
-      . /etc/bash_completion.d/hub.bash_completion.sh
+#pyenv stuff
+export PATH="/home/jleigh/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+#for techdocs cache
+if [ ! -d ~/.technology-docs-cache ]
+  then git clone https://gh.leapfrogonline.net/documentation/technology-docs ~/.technology-docs-cache
+else
+  find ~ -maxdepth 1 -type d -ctime 1 -name .technology-docs-cache -exec timeout 5 git -C {} pull origin master ';'
 fi
 
 #makes color output default for ls
-alias ls='ls --color=auto'
+alias ls='ls --color=always'
 
 #open vim with nerdtree
 alias vimd="vim -c NERDTree"
@@ -39,11 +48,14 @@ alias vimd="vim -c NERDTree"
 #open calcurse with orgmode
 alias CAL="VISUAL='vim -c \"setl filetype=org\"' PAGER=vim calcurse -D ~/Repos/ex2calcurse/.calcurse"
 
+#include -r for less
+alias less="less -r"
+
 #open lynx using home config
 alias lynx="lynx -cfg=~/.config/lynx/lynx.cfg"
 
 #open opsdocs in lynx
-alias OPSDOCS="lynx https://gh.leapfrogonline.com/pages/ops/"
+alias OPSDOCS="https://gh.leapfrogonline.net/pages/documentation/technology-docs/"
 
 #see ip and location
 alias whereami="curl ifconfig.co/json 2>/dev/null | jq -r '\"\(.ip):\n\(.country):\n\(.city):\n\(.hostname)\"' | column -t -s:"
@@ -55,8 +67,13 @@ alias ex2mutt="docker run --rm \
     -e USERID=$(id -u) \
     -e FULLNAME='joshua leigh' \
     -e ADUSER='jleigh@leapfrogonline.com' \
+    -e ADPASSWORD=`cat ~/.config/.53cr375 | awk -F "=" '{gsub(/"/, ""); if($1=="password"){print $2}}'` \
     -v /etc/localtime:/etc/localtime \
     -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
     -v ~/Maildir:/home/user/Maildir \
     -it exchange2mutt"
 
+complete -C /home/jleigh/bin/vault vault
+
+export NVM_DIR="/home/jleigh/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
